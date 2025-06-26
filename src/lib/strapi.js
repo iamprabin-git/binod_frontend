@@ -1,62 +1,56 @@
 import qs from 'qs';
 
-// 1. Get API URL from environment variables
 const API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL;
 
 async function fetchAPI(path, urlParamsObject = {}) {
   try {
-    // 2. Validate API URL
     if (!API_URL) {
-      throw new Error("Missing Strapi API URL. Add NEXT_PUBLIC_STRAPI_API_URL to .env.local");
+      throw new Error("Missing NEXT_PUBLIC_STRAPI_API_URL in .env.local");
     }
 
-    // 3. Clean URL paths
-    const cleanPath = path.replace(/^\//, ''); // Remove leading slashes
-    const cleanBaseUrl = API_URL.replace(/\/$/, ''); // Remove trailing slashes
+    // Construct URL safely
+    const baseUrl = API_URL.replace(/\/$/, '');
+    const cleanPath = path.replace(/^\//, '');
+    const url = new URL(`${baseUrl}/${cleanPath}`);
     
-    // 4. Build query string
-    const queryString = qs.stringify(urlParamsObject, {
+    // Add query parameters
+    const query = qs.stringify(urlParamsObject, {
       encodeValuesOnly: true,
       arrayFormat: 'brackets'
     });
+    url.search = query;
     
-    // 5. Construct full URL
-    const requestUrl = `${cleanBaseUrl}/${cleanPath}${queryString ? `?${queryString}` : ''}`;
+    console.log("Fetching Strapi API:", url.toString());
     
-    // 6. Log URL for debugging
-    console.log("[Strapi] Fetching:", requestUrl);
-    
-    // 7. Make API request
-    const response = await fetch(requestUrl, {
+    const response = await fetch(url, {
       headers: { 
         'Content-Type': 'application/json',
-        'Accept': 'application/json' // Explicitly request JSON
-      }
+        'Accept': 'application/json'
+      },
+      cache: 'no-store'
     });
     
-    // 8. Check for HTML responses
-    const contentType = response.headers.get('content-type');
-    if (!contentType || !contentType.includes('application/json')) {
-      const textResponse = await response.text();
-      
-      // 9. Handle common HTML errors
-      if (textResponse.startsWith('<!DOCTYPE html>')) {
-        console.error("⚠️ Received HTML instead of JSON. Possible issues:");
-        console.error("- Incorrect API URL: ", API_URL);
-        console.error("- Missing CORS configuration");
-        console.error("- Authentication required");
-        console.error("Response snippet:", textResponse.substring(0, 500));
-        
-        throw new Error(`Strapi returned HTML (status ${response.status})`);
-      }
-      
-      throw new Error(`Unexpected content type: ${contentType}`);
+    const text = await response.text();
+    
+    // Handle HTML responses
+    if (text.startsWith('<!DOCTYPE html>') || text.startsWith('<html')) {
+      console.error("HTML response received. Possible causes:");
+      console.error("1. Incorrect API URL:", API_URL);
+      console.error("2. Missing CORS configuration");
+      console.error("3. Authentication required");
+      console.error("Response snippet:", text.substring(0, 300));
+      throw new Error("API returned HTML instead of JSON");
     }
     
-    // 10. Return parsed JSON
-    return await response.json();
+    const data = JSON.parse(text);
+    
+    if (!response.ok) {
+      throw new Error(`API Error ${response.status}: ${data.error?.message || response.statusText}`);
+    }
+    
+    return data;
   } catch (error) {
-    console.error("🚨 Strapi API Error:", error.message);
+    console.error("Strapi API Error:", error.message);
     return {
       data: null,
       error: error.message
@@ -64,7 +58,6 @@ async function fetchAPI(path, urlParamsObject = {}) {
   }
 }
 
-// 11. Get all tours
 export async function getAllTours() {
   const response = await fetchAPI('api/tours', {
     populate: '*',
@@ -75,7 +68,6 @@ export async function getAllTours() {
   return response.data || [];
 }
 
-// 12. Get single tour by slug
 export async function getTourBySlug(slug) {
   if (!slug) return null;
   
@@ -85,5 +77,5 @@ export async function getTourBySlug(slug) {
     pagination: { pageSize: 1 }
   });
   
-  return (response.data && response.data[0]) || null;
+  return response.data?.[0] || null;
 }

@@ -1,4 +1,5 @@
-import { getTourBySlug } from '@/lib/strapi';
+
+import { getTourBySlug } from '../../../../lib/strapi';
 import Image from 'next/image';
 
 export default async function TourDetailPage({ params }) {
