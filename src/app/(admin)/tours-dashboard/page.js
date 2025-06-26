@@ -1,12 +1,12 @@
 import BackButton from '@/components/BackButton'
-import TourForm from '@/components/tours/TourForm'
+import TourTable from '@/components/tours/TourTable'
 import React from 'react'
 
 function page() {
   return (
     <div className='container mx-auto '>
-      <BackButton className="mt-40"/>
-      <TourForm />
+      
+      <TourTable />
     </div>
   )
 }
