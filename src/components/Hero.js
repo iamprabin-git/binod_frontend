@@ -21,7 +21,7 @@ export default function HeroSection() {
           <div className="relative w-full h-auto max-h-[450px] shadow-xl rounded-xl overflow-hidden">
             <Image
               src={heroImage}
-              alt="binod silwal"
+              alt="binod silwal khatri"
               width={1000}
               height={1000}
               className="w-full h-full object-cover"
@@ -38,7 +38,7 @@ export default function HeroSection() {
           className="flex-1 text-center md:text-left"
         >
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight">
-            Hello......
+            Hello.............
             <br />
             I&apos;m <span className="text-amber-500">Binod Silwal Khatri</span>
           </h1>

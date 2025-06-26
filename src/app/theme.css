@@ -14,7 +14,7 @@
 
 /* Prose styles for markdown-like content */
 .prose {
-  @apply max-w-none text-gray-600 dark:text-gray-300;
+  @apply max-w-none text-gray-700 dark:text-gray-300;
 }
 
 .prose h1,
