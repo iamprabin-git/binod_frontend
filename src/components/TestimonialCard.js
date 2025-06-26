@@ -12,7 +12,7 @@ export default function TestimonialCard({ testimonial }) {
       </div>
       {/* Fixed: Replaced problematic quotes with HTML entities */}
       <p className="text-gray-700 dark:text-gray-300 italic mb-6">
-        &ldquo;{testimonial.review}&rdquo;
+        {testimonial.review}
       </p>
       <div className="flex items-center">
         <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-4">
