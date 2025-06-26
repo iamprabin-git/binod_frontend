@@ -11,6 +11,8 @@ import { motion } from 'framer-motion';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, 
   LineElement, BarElement, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Line, Bar, Pie } from 'react-chartjs-2';
+import Link from 'next/link';
+import { ADMIN_ROUTE, HOME_ROUTE, TOURS_DASHBOARD_ROUTE } from '@/constants/routes';
 
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, 
@@ -178,24 +180,24 @@ const Dashboard = () => {
         <nav className="mt-6">
           <ul>
             <li className="mb-1">
-              <a 
-                href="#" 
+              <Link 
+                href={ADMIN_ROUTE} 
                 className={`flex items-center p-3 ${activeTab === 'dashboard' ? 'bg-blue-700' : 'hover:bg-blue-700'}`}
                 onClick={() => setActiveTab('dashboard')}
               >
                 <FaChartBar className="mr-3 text-blue-300" />
                 {sidebarOpen && <span>Dashboard</span>}
-              </a>
+              </Link>
             </li>
             <li className="mb-1">
-              <a 
-                href="#" 
+              <Link
+                href={TOURS_DASHBOARD_ROUTE} 
                 className={`flex items-center p-3 ${activeTab === 'tours' ? 'bg-blue-700' : 'hover:bg-blue-700'}`}
                 onClick={() => setActiveTab('tours')}
               >
                 <FaMapMarkerAlt className="mr-3 text-blue-300" />
                 {sidebarOpen && <span>Tours</span>}
-              </a>
+              </Link>
             </li>
             <li className="mb-1">
               <a 
@@ -267,6 +269,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
+              <Link href={HOME_ROUTE} className="relative p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Visit Website</Link>
               <motion.button 
                 className="relative p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                 whileHover={{ scale: 1.1 }}

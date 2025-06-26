@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_ITEMS } from "@/constants/navItems";
 import ThemeToggle from "@/components/ui/ThemeToggle";
-import { HOME_ROUTE } from "@/constants/routes";
+import { ADMIN_ROUTE, HOME_ROUTE } from "@/constants/routes";
 import logo from "@/assets/binodlogo.png";
 import Image from "next/image";
 
@@ -71,6 +71,7 @@ export default function Header() {
                 )}
               </svg>
             </button>
+            <Link href={ADMIN_ROUTE} className="text-green-600 dark:text-yellow-400 cursor-pointer">Admin</Link>
           </div>
         </div>
 
