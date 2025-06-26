@@ -23,8 +23,8 @@ export default function TestimonialCard({ testimonial }) {
       <div className="flex mb-4">{renderStars(testimonial.rating)}</div>
 
       <p className="text-gray-700 dark:text-gray-300 italic mb-6">
-        {/* Escape any quotes to prevent ESLint errors */}
-        {testimonial.review.replace(/'/g, '\u2019').replace(/"/g, '\u201c')}
+       
+        {testimonial.review}
       </p>
 
       <div className="flex items-center">

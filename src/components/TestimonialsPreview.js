@@ -46,7 +46,7 @@ export default function TestimonialsPreview() {
             Traveler Testimonials
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            {`Don\u2019t just take my word for it \u2014 hear what my clients have to say.`}
+            {`Don't just take my word for it - hear what my clients have to say.`}
           </p>
           <div className="w-20 h-1 bg-blue-600 dark:bg-blue-400 mx-auto mt-4"></div>
         </motion.div>
