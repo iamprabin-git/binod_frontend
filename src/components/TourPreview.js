@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import TourCard from '@/components/TourCard';
 import Link from 'next/link';
 import { FaSpinner } from 'react-icons/fa';
+import { TOUR_ROUTE } from '@/constants/routes';
 
 export default function ToursPreview() {
   const [tours, setTours] = useState([]);
@@ -49,7 +50,7 @@ export default function ToursPreview() {
             
             <div className="text-center">
               <Link
-                href="/tours"
+                href={TOUR_ROUTE}
                 className="inline-block border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-colors"
               >
                 View All Tours
