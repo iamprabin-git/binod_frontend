@@ -12,7 +12,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement,
   LineElement, BarElement, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Line, Bar, Pie } from 'react-chartjs-2';
 import Link from 'next/link';
-import { ADMIN_ROUTE, CUSTOMER_ROUTE, HOME_ROUTE, TOURS_DASHBOARD_ROUTE } from '@/constants/routes';
+import { ADMIN_ROUTE, CUSTOMER_ROUTE, GALLERY_DASHBOARD_ROUTE, HOME_ROUTE, REVIEW_DASHBOARD_ROUTE, TOURS_DASHBOARD_ROUTE } from '@/constants/routes';
 
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, 
@@ -211,7 +211,7 @@ const Dashboard = () => {
             </li>
             <li className="mb-1">
               <Link
-                href="#" 
+                href={GALLERY_DASHBOARD_ROUTE}
                 className={`flex items-center p-3 ${activeTab === 'galleries' ? 'bg-blue-700' : 'hover:bg-blue-700'}`}
                 onClick={() => setActiveTab('galleries')}
               >
@@ -231,7 +231,7 @@ const Dashboard = () => {
             </li>
             <li className="mb-1">
               <a 
-                href="#" 
+                href={REVIEW_DASHBOARD_ROUTE}
                 className={`flex items-center p-3 ${activeTab === 'reviews' ? 'bg-blue-700' : 'hover:bg-blue-700'}`}
                 onClick={() => setActiveTab('reviews')}
               >

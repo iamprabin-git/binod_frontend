@@ -1,6 +1,6 @@
 // src/app/(main)/tour/page.js
 import TourCard from '@/components/TourCard';
-import { getAllTours } from '@/lib/strapi';
+
 
 
 export default async function ToursPage() {
