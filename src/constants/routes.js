@@ -7,3 +7,5 @@ export const CONTACT_ROUTE = "/contact";
 export const ADMIN_ROUTE = "/dashboard";
 export const TOURS_DASHBOARD_ROUTE = "/tours-dashboard";
 export const TOURS_DASHBOARD_ADD_ROUTE = "/tours-dashboard/add";
+export const CUSTOMER_ROUTE = "/customer";
+export const CUSTOMER_ADD_ROUTE = "/customer/add";

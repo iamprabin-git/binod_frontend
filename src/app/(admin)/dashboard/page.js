@@ -12,7 +12,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement,
   LineElement, BarElement, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Line, Bar, Pie } from 'react-chartjs-2';
 import Link from 'next/link';
-import { ADMIN_ROUTE, HOME_ROUTE, TOURS_DASHBOARD_ROUTE } from '@/constants/routes';
+import { ADMIN_ROUTE, CUSTOMER_ROUTE, HOME_ROUTE, TOURS_DASHBOARD_ROUTE } from '@/constants/routes';
 
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, 
@@ -200,34 +200,34 @@ const Dashboard = () => {
               </Link>
             </li>
             <li className="mb-1">
-              <a 
+              <Link
                 href="#" 
                 className={`flex items-center p-3 ${activeTab === 'bookings' ? 'bg-blue-700' : 'hover:bg-blue-700'}`}
                 onClick={() => setActiveTab('bookings')}
               >
                 <FaCalendarAlt className="mr-3 text-blue-300" />
                 {sidebarOpen && <span>Bookings</span>}
-              </a>
+              </Link>
             </li>
             <li className="mb-1">
-              <a 
+              <Link
                 href="#" 
                 className={`flex items-center p-3 ${activeTab === 'galleries' ? 'bg-blue-700' : 'hover:bg-blue-700'}`}
                 onClick={() => setActiveTab('galleries')}
               >
                 <FcGallery className="mr-3 text-blue-300" />
                 {sidebarOpen && <span>Galleries</span>}
-              </a>
+              </Link>
             </li>
             <li className="mb-1">
-              <a 
-                href="#" 
+              <Link
+                href={CUSTOMER_ROUTE} 
                 className={`flex items-center p-3 ${activeTab === 'customers' ? 'bg-blue-700' : 'hover:bg-blue-700'}`}
                 onClick={() => setActiveTab('customers')}
               >
                 <FaUsers className="mr-3 text-blue-300" />
                 {sidebarOpen && <span>Customers</span>}
-              </a>
+              </Link>
             </li>
             <li className="mb-1">
               <a 
