@@ -2,7 +2,6 @@
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Custom animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -12,30 +11,40 @@
   animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Prose styles for markdown-like content */
+/* Prose styles - now using Tailwind's theme() function */
 .prose {
-  @apply max-w-none text-gray-700 dark:text-gray-300;
+  color: theme('colors.gray.600');
+  &.dark {
+    color: theme('colors.gray.400');
+  }
 }
 
 .prose h1,
 .prose h2,
 .prose h3,
 .prose h4 {
-  @apply text-gray-800 dark:text-white;
+  color: theme('colors.gray.800');
+  .dark & {
+    color: theme('colors.white');
+  }
 }
 
 .prose a {
-  @apply text-blue-600 dark:text-blue-400 hover:underline;
+  color: theme('colors.blue.600');
+  &:hover {
+    text-decoration: underline;
+  }
+  .dark & {
+    color: theme('colors.blue.400');
+  }
 }
 
 .prose ul {
-  @apply list-disc pl-5;
+  list-style-type: disc;
+  padding-left: 1.25rem;
 }
 
 .prose ol {
-  @apply list-decimal pl-5;
-}
-
-.prose-dark {
-  @apply prose dark:prose-invert;
+  list-style-type: decimal;
+  padding-left: 1.25rem;
 }

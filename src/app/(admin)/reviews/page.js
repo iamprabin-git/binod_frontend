@@ -117,7 +117,7 @@ const ReviewsPage = () => {
           </div>
           <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">No reviews found</h3>
           <p className="text-gray-500 dark:text-gray-400">
-            Try adjusting your search or filter to find what you're looking for.
+            Try adjusting your search or filter to find what you are looking for.
           </p>
         </div>
       ) : viewMode === 'cards' ? (

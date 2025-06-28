@@ -230,24 +230,24 @@ const Dashboard = () => {
               </Link>
             </li>
             <li className="mb-1">
-              <a 
+              <Link
                 href={REVIEW_DASHBOARD_ROUTE}
                 className={`flex items-center p-3 ${activeTab === 'reviews' ? 'bg-blue-700' : 'hover:bg-blue-700'}`}
                 onClick={() => setActiveTab('reviews')}
               >
                 <FaStar className="mr-3 text-blue-300" />
                 {sidebarOpen && <span>Reviews</span>}
-              </a>
+              </Link>
             </li>
             <li className="mt-8 mb-1">
-              <a 
+              <Link
                 href="#" 
                 className={`flex items-center p-3 ${activeTab === 'settings' ? 'bg-blue-700' : 'hover:bg-blue-700'}`}
                 onClick={() => setActiveTab('settings')}
               >
                 <FaCog className="mr-3 text-blue-300" />
                 {sidebarOpen && <span>Settings</span>}
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -304,7 +304,7 @@ const Dashboard = () => {
             >
               Dashboard Overview
             </motion.h1>
-            <p className="text-gray-600 dark:text-gray-400">Welcome back! Here's your tour business performance summary</p>
+            <p className="text-gray-600 dark:text-gray-400">Welcome back! Here your tour business performance summary</p>
           </div>
 
           {/* Stats Cards */}
