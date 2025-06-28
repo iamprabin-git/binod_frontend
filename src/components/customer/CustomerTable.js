@@ -9,6 +9,8 @@ import { GrSettingsOption } from "react-icons/gr";
 import BackButton from "../BackButton";
 import Link from "next/link";
 import { CUSTOMER_ADD_ROUTE } from "@/constants/routes";
+import Image from "next/image";
+import photo from "@/assets/photo.png";
 
 // Main CustomerTable Component
 function CustomerTable() {
@@ -115,9 +117,11 @@ function CustomerTable() {
                   <td className="px-4 py-3">
                     <div className="flex items-center">
                       <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
-                        <img 
-                          src="https://via.placeholder.com/40" 
+                        <Image
+                          src={photo}
                           alt="Hary Lorence" 
+                          width={40}
+                          height={40}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -140,9 +144,11 @@ function CustomerTable() {
                   <td className="px-4 py-3">
                     <div className="flex items-center">
                       <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
-                        <img 
-                          src="https://via.placeholder.com/40" 
+                        <Image
+                          src={photo}
                           alt="Lary pase" 
+                          width={40}
+                          height={40}
                           className="w-full h-full object-cover"
                         />
                       </div>

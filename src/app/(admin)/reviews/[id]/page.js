@@ -48,7 +48,7 @@ const ReviewDetailPage = ({ params }) => {
 
   const handleDelete = () => {
     if (confirm('Are you sure you want to delete this review?')) {
-      router.push('/admin/reviews');
+      router.push('/reviews');
     }
   };
 

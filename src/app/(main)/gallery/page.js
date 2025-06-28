@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiFilter, FiX, FiChevronLeft, FiChevronRight, FiSearch } from 'react-icons/fi';
+import GalleryRow from '@/components/gallery/GalleryRow';
 
 export default function GalleryPage() {
   // Gallery data - replace with your actual images
@@ -279,6 +280,7 @@ export default function GalleryPage() {
           </motion.div>
         )}
       </AnimatePresence>
+     
     </div>
   );
 }
